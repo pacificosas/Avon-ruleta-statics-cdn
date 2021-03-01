@@ -5,11 +5,17 @@ export const environment={
     
     apiUrl: "https://localhost:5001/api/",
 
-    staticsUrl:"http://127.0.0.1:5500/statics/",
+    staticsUrl:"https://cdn.jsdelivr.net/gh/pacificosas/avon-ruleta-statics-cdn@1/img/",
 
     styles:[
-        "http://127.0.0.1:5500/styles/dist/index.css"
+        "https://cdn.jsdelivr.net/gh/pacificosas/avon-ruleta-statics-cdn@1/dist/css/index.css"
     ],
+
+    // staticsUrl:"http://127.0.0.1:5500/statics/",
+
+    // styles:[
+    //     "http://127.0.0.1:5500/styles/dist/index.css"
+    // ],
 
     get currentCountry(){
         switch (window.location.hostname) {
@@ -39,7 +45,7 @@ export const environment={
             4:"20%",
             6:"50%",
             8:"30%",
-            10:"20%"
+            10:"40%"
 
         }
     }

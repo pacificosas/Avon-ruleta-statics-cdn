@@ -1,8 +1,8 @@
 {
-  "name": "avon-ruleta",
+  "name": "avon-ruleta-cdn",
   "version": "1.0.0",
   "description": "Script de cliente para proyecto de Ruleta Avon",
-  "main": "dist/ruleta.js",
+  "main": "dist/js/index.js",
   "scripts": {
     "ts:dev": "webpack --config webpack.config.develop.js",
     "sass:dev": "sass sass/index.scss:dist/css/index.css --watch",
