@@ -3,7 +3,7 @@ import { ImgStore } from "./tools/imgStore";
 export const environment={
     production:true,
     
-    apiUrl: "https://localhost:5001/api/",
+    apiUrl: "http://ruleta.avoncpe.com/api/",
 
     staticsUrl:"https://cdn.jsdelivr.net/gh/pacificosas/avon-ruleta-statics-cdn@1/img/",
 
