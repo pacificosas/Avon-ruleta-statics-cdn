@@ -1,0 +1,20 @@
+@import "../variables";
+@import "../mixins/responsive";
+.roulette-btn{
+    padding: 1rem 2rem;
+    display: block;
+    
+    color: $onPrimaryColor;
+    background: $primaryColor;
+    border: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.5rem;
+
+    @include responsive("mobile"){
+        margin: 1rem auto;
+    }
+    @include responsive("desktop"){
+        margin: 4rem auto;
+    }
+}

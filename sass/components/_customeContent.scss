@@ -1,0 +1,18 @@
+%customContent{
+    margin:1rem 0;
+
+    strong{
+        font-weight: bold;
+    }
+}
+
+.roulette-init-content{
+
+    @extend %customContent;
+}
+
+.roulette-end-content{
+    @extend %customContent;
+}
+
+

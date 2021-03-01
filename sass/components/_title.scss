@@ -1,0 +1,17 @@
+.roulette-title{
+    font-weight: bold;
+    word-wrap: anywhere;
+    word-break: break-word;
+    
+    & .light{
+        color:white;
+    }
+    & .color{
+        color:#e8336e;
+    }
+
+    &-img{
+        width:100%;
+        max-width:300px;
+    }
+}

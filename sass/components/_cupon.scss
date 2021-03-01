@@ -1,0 +1,11 @@
+@import "../variables";
+
+.roulette-cupon{
+    text-align: center;
+    padding: 1rem;
+    color:$onPrimaryColor;
+    background: $primaryColor;
+    border-radius: 3px;
+    margin:0.5rem 0;
+    box-shadow: inset #5500004a 0px 3px 6px 3px;
+}

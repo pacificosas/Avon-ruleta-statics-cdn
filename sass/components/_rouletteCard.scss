@@ -1,0 +1,76 @@
+@import "../variables";
+@import "../mixins/responsive";
+
+.roulette-card{
+    
+    display: grid;
+    position: relative;
+    height:100%;
+    width:100%;
+
+    @include responsive("desktop"){
+        grid-template-columns: 40% 1fr;
+    }
+    @include responsive("mobile"){
+            grid-template-columns: repeat(1,1fr);
+            grid-template-rows: 13rem 2fr;
+    }
+    
+    & .col:first-child{
+        overflow: hidden;
+        position: relative;
+
+        &::before{
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 140%;
+            bottom: 3%;
+            border-radius: 50%;
+            transform: translate(-46%,-22%);
+            -webkit-transform: translate(-46%,-22%);
+            box-shadow: $surfaceShadow 1.2rem 1.5rem 28px 0px;
+            background: #77130e87;
+
+            @include responsive("mobile"){
+                width: 60%;
+                height: 100%;
+                left: 50%;
+                top:20%;
+                transform: translate(-50%,-50%);
+                box-shadow: $surfaceShadow 0 4rem 28px 0px;
+                max-width: 95%;
+                max-height: 175%;
+
+            }
+            @media screen and(max-width: 480px) {
+                top:9%;
+            }
+            @media screen and(max-width: 400px) {
+                top:2%;
+            }
+            @media screen and(max-width: 350px) {
+                top:-8%;
+            }
+            
+        }
+    }
+
+    & .data{
+
+        color:$primaryDarkColor;
+
+        @include responsive("desktop"){
+            padding-top:3rem;
+            padding-right: 4rem;
+        }
+
+        @include responsive("mobile"){
+            padding: 2rem;
+            padding-top: 0;
+        }
+        
+    }
+
+}

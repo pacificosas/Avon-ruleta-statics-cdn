@@ -1,0 +1,11 @@
+@import "../variables";
+.roulette-percent{
+    background-color: $onSurfaceColor;
+    width: 100%;
+    height: 1rem;
+    &-val{
+        background-color: $primaryColor;
+        
+        height: 1rem;
+    }
+}

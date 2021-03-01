@@ -1,0 +1,18 @@
+@mixin responsive($type) {
+
+    @if $type == "mobile" {
+        @media screen and(max-width: 552px) {
+            &{
+                @content;
+            }
+        }    
+    }@else if $type == "desktop" {
+        @media screen and(min-width: 551px) {
+            &{
+                @content;
+            }
+        }    
+    }
+    
+}
+

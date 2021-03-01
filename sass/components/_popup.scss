@@ -1,0 +1,74 @@
+@import "../variables";
+@import "../mixins/responsive";
+.popup{
+    & *{
+        font-family: Arial,Gotham,"Helvetica Neue",Helvetica,sans-serif!important;
+    }
+
+    width: 50vw;
+    // height:50vh;
+    z-index: 10;
+    position: absolute;
+    top:50vh;
+    left:50vw;
+    max-width: 650px;
+    max-height: 100vh;
+    overflow-y: auto;
+
+    transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    opacity: 0;
+    transition: all 0.3s;
+
+
+    background: $surfaceColor;
+    @include responsive("desktop"){
+        min-width: 550px;
+    }
+    @include responsive("mobile"){
+        width: 80vw;
+        max-height:95vh; 
+    }
+
+
+    @at-root &-overlay{
+        position: absolute;
+        z-index: 4;
+        top:0;
+        bottom: 0;
+        left:0;
+        right:0;
+        background-color: rgba(255, 255, 255, 0.8);
+
+    }
+
+    &-card{
+        position: relative;
+
+        height:100%;
+        width:100%;
+    }
+
+    &-closer{
+        position: absolute;
+        top: 0rem;
+        right: 1.5rem;
+        font-size: 3rem;
+        cursor: pointer;
+        z-index: 2;
+        color:$onSurfaceColor;
+        @include responsive("mobile"){
+            right:0.5rem;
+        }
+    }
+
+    &-open{
+        opacity: 1;
+    }
+
+    &-close{
+        opacity: 0;
+    }
+
+    
+}

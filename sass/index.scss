@@ -1,0 +1,17 @@
+@import "./components/noScroll";
+@import "./components/popup";
+@import "./components/rouletteCard";
+@import "./components/rouletteWheel";
+@import "./components/title";
+@import "./components/percent";
+@import "./components/customeContent";
+@import "./components/btn";
+@import "./components/endView";
+@import "./components/cupon";
+@import "./components/cuponAlert";
+
+.roulette{
+    &-bold{
+        font-weight: bold;
+    }
+}
