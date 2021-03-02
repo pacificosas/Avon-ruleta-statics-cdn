@@ -9,11 +9,20 @@ var cuponService:CuponService=ServiceSingleton.cupon
 var storageService:StorageService=ServiceSingleton.storage
 
 export async function cuponGetter(req:ReqModel,res,next){
+    
     if(!req.roulette || !req.playRoulette){
+        console.log("asdasdasdasd");
+        
         return
     }
     
     var cupon:Cupon=JSON.parse(storageService.get("cupon",false))
+   
+    
+    if(cupon && (!cupon.from || !cupon.code)){
+        req.cupon=cupon    
+        next()
+    }
 
     if( cupon == null  || cupon.from !== req.roulette.id){
         

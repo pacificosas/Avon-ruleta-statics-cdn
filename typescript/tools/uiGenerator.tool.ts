@@ -135,7 +135,14 @@ export class uiGenerator extends Popup{
                 <h4 style="font-size:15px"> Casi lo logras ¡Te deseamos una mejor suerte la próxima vez!</h4>
             `
         }
+
+        var btn=document.createElement("button")
+        btn.classList.add("roulette-btn")
+        btn.innerText="Continuar"
+        btn.addEventListener('click',()=>{this.close()})
+
         container.innerHTML= content
+        container.append(btn)
         
         return this
     }
@@ -169,13 +176,15 @@ export class uiGenerator extends Popup{
                 stop=true;
             },duration)
             
-            var stopAt=((360/environment.wheel.sides)*targetZone)
+            var stopAt=360-((360/environment.wheel.sides)*targetZone)
             
+            console.log(stopAt);
             
             if(window.innerWidth <= 552 ){
-                stopAt=stopAt-90 < 0 ? 360 - stopAt-90 :stopAt-90
+                stopAt=stopAt+90 > 360 ?  stopAt-90 :stopAt+90
             }
-
+            console.log(environment.wheel.sides,targetZone,stopAt);
+            
             if(stopAt < 0){
                 targetZone=noWinPosition(environment.wheel.sides,environment.winPositions)
                 var stopAt=((360/environment.wheel.sides)*targetZone)
@@ -194,7 +203,7 @@ export class uiGenerator extends Popup{
                 var transformValue=transform + `rotateZ(${degrees}deg)`
                 this.roulette.style.transform= transformValue
                 this.roulette.style.webkitTransform=transformValue
-                degrees-=(360/environment.wheel.sides)
+                degrees+=(360/environment.wheel.sides)
             },150)
         })
     }
