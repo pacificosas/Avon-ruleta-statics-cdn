@@ -8,4 +8,20 @@
     border-radius: 3px;
     margin:0.5rem 0;
     box-shadow: inset #5500004a 0px 3px 6px 3px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    span{
+        text-align: center;
+        display: block;
+        width:100%;
+    }
+    .icon{
+        width:1.5rem;
+        margin-left:auto;
+        padding:0.5rem;
+        box-sizing: content-box;
+        cursor: pointer;
+    }
 }

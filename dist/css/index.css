@@ -233,7 +233,8 @@
 }
 @media screen and (max-width: 552px) {
   .roulette-btn {
-    margin: 1rem auto;
+    margin: 2rem auto;
+    font-size: 1.2rem;
   }
 }
 @media screen and (min-width: 551px) {
@@ -261,6 +262,22 @@
   border-radius: 3px;
   margin: 0.5rem 0;
   box-shadow: inset #5500004a 0px 3px 6px 3px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+.roulette-cupon span {
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+.roulette-cupon .icon {
+  width: 1.5rem;
+  margin-left: auto;
+  padding: 0.5rem;
+  box-sizing: content-box;
+  cursor: pointer;
 }
 
 .cupon-alert-popup {

@@ -16,12 +16,12 @@ export class uiGenerator extends Popup{
     constructor(public parent:HTMLElement, public cupon, public uidata:UiData){
         super();
         
-        this.onClose=()=>{
-            var input:HTMLInputElement=document.querySelector("#couponcode")
-            if(input && cupon && cupon.code && this.gameOver){
-                input.value=cupon.code
-            }
-        }
+        // this.onClose=()=>{
+        //     var input:HTMLInputElement=document.querySelector("#couponcode")
+        //     if(input && cupon && cupon.code && this.gameOver){
+        //         input.value=cupon.code
+        //     }
+        // }
     }
 
     get html(){ 
@@ -123,17 +123,35 @@ export class uiGenerator extends Popup{
                 
                 <p class="roulette-end-subtitle"> Felicitaciones! Ganaste un cupón por el <span class="accent">${cupon.type}</span>  de descuento en tu compra ¡Corre a usarlo!<p>
 
-                <h2 class="roulette-cupon">${cupon.code}</h3>
+                <h2 class="roulette-cupon"> <span>${cupon.code} </span>
+                    <svg class="icon" id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 53.63 61.28"><defs><style>.cls-1{fill:#fff;}</style></defs><polygon class="cls-1" points="12.59 0 12.59 9.13 41.58 9.13 41.58 52.07 53.63 52.07 53.63 0 12.59 0"/><rect class="cls-1" y="12.78" width="38.22" height="48.5"/></svg>
+                </h2>
+                
                 <span class="roulette-bold">*Este es tu código. Ingrésalo y aplícalo</span>
 
                 <div class="roulette-end-content ">
                    ${this.uidata.endContent|| ""}
                 </div>
             `
+            container.innerHTML= content
+            container.querySelector(".icon").addEventListener("click",()=>{
+                var i=document.createElement("input");
+                i.style.opacity="0";
+                i.style.position="absolute"
+                i.value=cupon.code
+                document.body.append(i)
+                i.select();
+                i.setSelectionRange(0, 99999);
+                document.execCommand("copy");
+                alert("Cupón copiado en portapapeles")
+                i.remove()
+
+            })
         }else{
             content=`
                 <h4 style="font-size:15px"> Casi lo logras ¡Te deseamos una mejor suerte la próxima vez!</h4>
             `
+            container.innerHTML= content
         }
 
         var btn=document.createElement("button")
@@ -141,7 +159,7 @@ export class uiGenerator extends Popup{
         btn.innerText="Continuar"
         btn.addEventListener('click',()=>{this.close()})
 
-        container.innerHTML= content
+        
         container.append(btn)
         
         return this
@@ -178,12 +196,10 @@ export class uiGenerator extends Popup{
             
             var stopAt=360-((360/environment.wheel.sides)*targetZone)
             
-            console.log(stopAt);
             
             if(window.innerWidth <= 552 ){
                 stopAt=stopAt+90 > 360 ?  stopAt-90 :stopAt+90
             }
-            console.log(environment.wheel.sides,targetZone,stopAt);
             
             if(stopAt < 0){
                 targetZone=noWinPosition(environment.wheel.sides,environment.winPositions)
