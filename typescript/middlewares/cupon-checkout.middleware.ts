@@ -1,3 +1,4 @@
+
 import { ReqModel } from "../models/req.model";
 import { ServiceSingleton } from "../patterns/servicesSingleton.pattern";
 import { CuponService } from "../services/cupon.service";
@@ -7,14 +8,18 @@ import { devLog } from "../tools/devLog.tool";
 var cuponService:CuponService=ServiceSingleton.cupon
 var storageService:StorageService=ServiceSingleton.storage;
 
-export function cuponCheckout(req:ReqModel,res,next){
+export function cuponCheckout(){
+    // console.log("checkout");
     
-    req.cupon=JSON.parse(storageService.get("cupon",false))
-    req.cuponInput=storageService.get("cuponInput") || "";
-
-    if(req.cupon && req.cupon.code.trim() == req.cuponInput.trim()){
+    var cupon=JSON.parse(storageService.get("cupon",false))
+    var cuponInput=storageService.get("cuponInput") || "";
+    console.log(cupon);
+    
+    // console.log(cupon,cupon.code.trim(),cuponInput.trim(),cupon.code.trim() == cuponInput.trim());
+    
+    if(cupon && cupon.code && cupon.code.trim() == cuponInput.trim()){
         devLog('cupon checkout',"use");
-        cuponService.use(req.cupon)
+        cuponService.use(cupon)
     }else{
         devLog("cupon checkout",'nothing to do');
         

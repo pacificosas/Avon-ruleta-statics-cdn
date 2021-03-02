@@ -26,7 +26,7 @@ export class CuponService{
     async use(cupon:Cupon){
 
         try {
-            var raw=await fetch(this.serviceUrl+`use/${cupon.code}`)
+            var raw=await fetch(this.serviceUrl+`use/${cupon.code}`,{method:"post"})
             var res:ApiResponse=await raw.json();
             return res.success
 
