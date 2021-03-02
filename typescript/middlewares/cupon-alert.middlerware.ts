@@ -13,9 +13,17 @@ export function cuponAlert(req:ReqModel,res,next){
         card.classList.add("cupon-alert-popup")
         card.innerHTML=`
             <h2>
-                Recuerda que estar seguro de tu compra antes de proceder al pago
+                Recuerda que debes estar seguro de tu compra antes de proceder al pago
             </h2>
         `
+        //anadir boton de continuar
+        var btn=document.createElement("button")
+        btn.classList.add("roulette-btn")
+        btn.innerText="Continuar"
+        btn.addEventListener('click',()=>{popup.close()})
+
+        card.append(btn);
+
         popup.build()
             .open();
         popup.card.append(card)

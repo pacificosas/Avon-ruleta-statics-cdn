@@ -266,8 +266,8 @@
 .cupon-alert-popup {
   padding: 5rem;
 }
-.cupon-alert-popup * {
-  color: white;
+.cupon-alert-popup *:not(.roulette-btn) {
+  color: #a02552;
 }
 
 .roulette-bold {

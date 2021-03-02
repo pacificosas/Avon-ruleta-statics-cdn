@@ -3,6 +3,7 @@ export class Popup{
     public container:HTMLElement;
     public card:HTMLElement
     protected overlay:HTMLElement;
+    public onClose:Function;
 
     build(){
         var overlay= document.createElement('div');
@@ -37,10 +38,13 @@ export class Popup{
     eventListenners(){
         this.container.querySelector('.popup-closer').addEventListener("click",()=>{
             this.close()
+            if(this.onClose){
+                this.onClose();
+            }
         })
-        this.overlay.addEventListener("click",()=>{
-            this.close()
-        })
+        // this.overlay.addEventListener("click",()=>{
+        //     this.close()
+        // })
     }
 
     open(){

@@ -2,7 +2,7 @@
 
 .cupon-alert-popup{
     padding: 5rem;
-    *{
-        color:$onSurfaceColor;
+    *:not(.roulette-btn){
+        color:$primaryDarkColor;
     }
 }

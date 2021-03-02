@@ -11,10 +11,12 @@ export const environment={
         "https://cdn.jsdelivr.net/gh/pacificosas/avon-ruleta-statics-cdn@1/dist/css/index.css"
     ],
 
-    // staticsUrl:"http://127.0.0.1:5500/statics/",
+    // apiUrl: "https://localhost:5001/api/",
+
+    // staticsUrl:"http://127.0.0.1:5500/img/",
 
     // styles:[
-    //     "http://127.0.0.1:5500/styles/dist/index.css"
+    //     "http://127.0.0.1:5500/dist/css/index.css"
     // ],
 
     get currentCountry(){

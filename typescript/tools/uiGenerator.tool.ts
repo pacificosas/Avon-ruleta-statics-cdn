@@ -11,10 +11,17 @@ export class uiGenerator extends Popup{
 
 
    public winTarget;
+   private gameOver=false;
     
     constructor(public parent:HTMLElement, public cupon, public uidata:UiData){
         super();
         
+        this.onClose=()=>{
+            var input:HTMLInputElement=document.querySelector("#couponcode")
+            if(input && cupon && cupon.code && this.gameOver){
+                input.value=cupon.code
+            }
+        }
     }
 
     get html(){ 
@@ -29,7 +36,10 @@ export class uiGenerator extends Popup{
     async runRoulette(){
         if(this.winTarget!== null){
             await this.play(this.winTarget)
-            setTimeout(()=>this.endGameContent(),500)
+            setTimeout(()=>{
+                this.gameOver=true
+                this.endGameContent()
+            },500)
         
         }
     }
@@ -105,17 +115,16 @@ export class uiGenerator extends Popup{
     private endGameContent(){
         var cupon:Cupon=this.cupon
         var container=this.content
-        var header=`
-       <img src="${environment.imgStore.get("endTitle")}" class="roulette-final-title">
-        `
         
         var content;
         if(cupon.code){
             content=`
+                <img src="${environment.imgStore.get("endTitle")}" class="roulette-final-title">
+                
                 <p class="roulette-end-subtitle"> Felicitaciones! Ganaste un cupón por el <span class="accent">${cupon.type}</span>  de descuento en tu compra ¡Corre a usarlo!<p>
 
                 <h2 class="roulette-cupon">${cupon.code}</h3>
-                <span class="roulette-bold">*Este es tu codigo</span>
+                <span class="roulette-bold">*Este es tu código. Ingrésalo y aplícalo</span>
 
                 <div class="roulette-end-content ">
                    ${this.uidata.endContent|| ""}
@@ -123,10 +132,10 @@ export class uiGenerator extends Popup{
             `
         }else{
             content=`
-                <p>Casi lo logras ¡Te deseamos una mejor suerte la próxima vez!</p>
+                <h4 style="font-size:15px"> Casi lo logras ¡Te deseamos una mejor suerte la próxima vez!</h4>
             `
         }
-        container.innerHTML=header + content
+        container.innerHTML= content
         
         return this
     }
@@ -193,7 +202,7 @@ export class uiGenerator extends Popup{
     private getPercentTag(){
         var cupon=this.cupon
         var percent=`
-        <p>${cupon.percentDelivered}% de cupones de hoy entregados</p>
+        <p>${cupon.percentDelivered}% de cupones entregados hoy</p>
         <div class='roulette-percent'>
             <div class='roulette-percent-val' style="width:${cupon.percentDelivered}%;"></div>
         </div>
