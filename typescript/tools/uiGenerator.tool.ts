@@ -87,6 +87,7 @@ export class uiGenerator extends Popup{
     private async loadImages(){
         await environment.imgStore.add("initTitle",this.uidata.img)
         await environment.imgStore.add("endTitle",`${environment.staticsUrl}title-end.png`)
+        await environment.imgStore.add("endLoseTitle",`${environment.staticsUrl}title-end-lose.png`)
         await environment.imgStore.add("rouletteWheel",`${environment.staticsUrl}ruleta.png`)
         await environment.imgStore.add("roulettePin",`${environment.staticsUrl}ruleta-pin.png`)
 
@@ -149,6 +150,7 @@ export class uiGenerator extends Popup{
             })
         }else{
             content=`
+                <img src="${environment.imgStore.get("endLoseTitle")}" class="roulette-final-title">
                 <h4 style="font-size:15px"> Casi lo logras ¡Te deseamos una mejor suerte la próxima vez!</h4>
             `
             container.innerHTML= content
