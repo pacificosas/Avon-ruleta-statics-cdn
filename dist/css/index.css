@@ -230,19 +230,13 @@
   text-transform: uppercase;
   font-weight: bold;
   font-size: 1.5rem;
+  margin: 2rem auto;
 }
 @media screen and (max-width: 552px) {
   .roulette-btn {
-    margin: 2rem auto;
     font-size: 1.2rem;
   }
 }
-@media screen and (min-width: 551px) {
-  .roulette-btn {
-    margin: 4rem auto;
-  }
-}
-
 .roulette-end-subtitle {
   font-weight: bold;
 }

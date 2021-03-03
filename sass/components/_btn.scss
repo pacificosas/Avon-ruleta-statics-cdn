@@ -10,12 +10,12 @@
     text-transform: uppercase;
     font-weight: bold;
     font-size: 1.5rem;
-
+    margin: 2rem auto;
     @include responsive("mobile"){
-        margin: 2rem auto;
+       
         font-size: 1.2rem;
     }
     @include responsive("desktop"){
-        margin: 4rem auto;
+        // margin: 3rem auto;
     }
 }

@@ -8,7 +8,7 @@ import { Popup } from "./popup.tool";
 export class uiGenerator extends Popup{
     private roulette:HTMLElement;
     private content:HTMLElement
-
+    private currentView:string;
 
    public winTarget;
    private gameOver=false;
@@ -16,12 +16,7 @@ export class uiGenerator extends Popup{
     constructor(public parent:HTMLElement, public cupon, public uidata:UiData){
         super();
         
-        // this.onClose=()=>{
-        //     var input:HTMLInputElement=document.querySelector("#couponcode")
-        //     if(input && cupon && cupon.code && this.gameOver){
-        //         input.value=cupon.code
-        //     }
-        // }
+      
     }
 
     get html(){ 
@@ -30,10 +25,16 @@ export class uiGenerator extends Popup{
 
     attatch(){
         super.atatch(this.parent);
+        this.card.addEventListener("click",()=>{
+            if(this.currentView=="init"){
+                this.runRoulette()
+            }
+        })
         return this;
     }
     
     async runRoulette(){
+        this.goToTop()
         if(this.winTarget!== null){
             await this.play(this.winTarget)
             setTimeout(()=>{
@@ -84,6 +85,11 @@ export class uiGenerator extends Popup{
         this.content=col_2;
         return this;
     }
+
+    private goToTop(){
+        window.scrollTo({ top: 0,  behavior: 'smooth' });
+    }
+
     private async loadImages(){
         await environment.imgStore.add("initTitle",this.uidata.img)
         await environment.imgStore.add("endTitle",`${environment.staticsUrl}title-end.png`)
@@ -93,6 +99,8 @@ export class uiGenerator extends Popup{
 
     }
     private initContent(container?:HTMLElement){
+        this.goToTop()
+        this.currentView="init"
         container=container || this.content
        
         container.innerHTML+=`<img class="roulette-title-img" src="${ environment.imgStore.get("initTitle")|| ""}" alt="Ruleta Avon"/>`
@@ -114,6 +122,8 @@ export class uiGenerator extends Popup{
     }
 
     private endGameContent(){
+        this.goToTop()
+        this.currentView="end"
         var cupon:Cupon=this.cupon
         var container=this.content
         
@@ -136,22 +146,13 @@ export class uiGenerator extends Popup{
             `
             container.innerHTML= content
             container.querySelector(".icon").addEventListener("click",()=>{
-                var i=document.createElement("input");
-                i.style.opacity="0";
-                i.style.position="absolute"
-                i.value=cupon.code
-                document.body.append(i)
-                i.select();
-                i.setSelectionRange(0, 99999);
-                document.execCommand("copy");
-                alert("Cupón copiado en portapapeles")
-                i.remove()
+               this.copyToClipBoard()
 
             })
         }else{
             content=`
                 <img src="${environment.imgStore.get("endLoseTitle")}" class="roulette-final-title">
-                <h4 style="font-size:15px"> Casi lo logras ¡Te deseamos una mejor suerte la próxima vez!</h4>
+                <h4 style="font-size:15px">¡Te deseamos una mejor suerte la próxima vez!</h4>
             `
             container.innerHTML= content
         }
@@ -159,12 +160,30 @@ export class uiGenerator extends Popup{
         var btn=document.createElement("button")
         btn.classList.add("roulette-btn")
         btn.innerText="Continuar"
-        btn.addEventListener('click',()=>{this.close()})
+        btn.addEventListener('click',()=>{
+            this.close()
+            if(this.cupon.code){
+                this.copyToClipBoard()
+            }
+        })
 
         
         container.append(btn)
         
         return this
+    }
+
+    private copyToClipBoard(){
+        var i=document.createElement("input");
+        i.style.opacity="0";
+        i.style.position="absolute"
+        i.value=this.cupon.code
+        document.body.append(i)
+        i.select();
+        i.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        alert("Cupón copiado en portapapeles")
+        i.remove()
     }
 
     private fixSize(container:HTMLElement){
