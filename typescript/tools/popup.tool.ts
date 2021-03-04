@@ -38,9 +38,6 @@ export class Popup{
     eventListenners(){
         this.container.querySelector('.popup-closer').addEventListener("click",()=>{
             this.close()
-            if(this.onClose){
-                this.onClose();
-            }
         })
         // this.overlay.addEventListener("click",()=>{
         //     this.close()
@@ -62,6 +59,9 @@ export class Popup{
         return this;
     }
     close(){
+        if(this.onClose){
+            this.onClose();
+        }
         this.container.classList.remove("popup-open")
         this.container.classList.add("popup-close")
 

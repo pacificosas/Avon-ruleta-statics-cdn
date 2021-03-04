@@ -176,7 +176,7 @@
     left: 50%;
     transform: translate(-50%, 0%) rotate(90deg);
     -webkit-transform: translate(-50%, 0%) rotate(90deg);
-    max-width: 16%;
+    max-width: 20%;
   }
 }
 @media screen and (min-width: 551px) {
@@ -184,7 +184,7 @@
     top: 50%;
     transform: translate(0, -50%);
     -webkit-transform: translate(0, -50%);
-    max-width: 25%;
+    max-width: 30%;
   }
 }
 
@@ -242,6 +242,8 @@
 }
 .roulette-end-subtitle .accent {
   color: #e8336e;
+  font-size: 1.5em;
+  padding: 0 0.2em;
 }
 
 .roulette-final-title {

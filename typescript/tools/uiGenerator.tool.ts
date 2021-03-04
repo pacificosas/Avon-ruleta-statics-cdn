@@ -9,13 +9,18 @@ export class uiGenerator extends Popup{
     private roulette:HTMLElement;
     private content:HTMLElement
     private currentView:string;
+    private gameOver=false;
+    private playing=false;
 
-   public winTarget;
-   private gameOver=false;
+    public winTarget;
+    
     
     constructor(public parent:HTMLElement, public cupon, public uidata:UiData){
         super();
-        
+        this.onClose=()=>{
+            devLog("uiTools","remove all images")
+            environment.imgStore.removeAll()
+        }
       
     }
 
@@ -24,6 +29,7 @@ export class uiGenerator extends Popup{
     }
 
     attatch(){
+        this.goToTop()
         super.atatch(this.parent);
         this.card.addEventListener("click",()=>{
             if(this.currentView=="init"){
@@ -34,10 +40,16 @@ export class uiGenerator extends Popup{
     }
     
     async runRoulette(){
+        if(this.playing){
+            return;
+        }
+
         this.goToTop()
         if(this.winTarget!== null){
+            this.playing=true
             await this.play(this.winTarget)
             setTimeout(()=>{
+                this.playing=false
                 this.gameOver=true
                 this.endGameContent()
             },500)
@@ -46,6 +58,7 @@ export class uiGenerator extends Popup{
     }
    
     async generate(){
+        this.goToTop()
         await this.loadImages()
         super.build();
         
@@ -135,7 +148,10 @@ export class uiGenerator extends Popup{
                 <p class="roulette-end-subtitle"> Felicitaciones! Ganaste un cupón por el <span class="accent">${cupon.type}</span>  de descuento en tu compra ¡Corre a usarlo!<p>
 
                 <h2 class="roulette-cupon"> <span>${cupon.code} </span>
-                    <svg class="icon" id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 53.63 61.28"><defs><style>.cls-1{fill:#fff;}</style></defs><polygon class="cls-1" points="12.59 0 12.59 9.13 41.58 9.13 41.58 52.07 53.63 52.07 53.63 0 12.59 0"/><rect class="cls-1" y="12.78" width="38.22" height="48.5"/></svg>
+                    <span class="icon">
+                    <svg  id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 53.63 61.28"><defs><style>.cls-1{fill:#fff;}</style></defs><polygon class="cls-1" points="12.59 0 12.59 9.13 41.58 9.13 41.58 52.07 53.63 52.07 53.63 0 12.59 0"/><rect class="cls-1" y="12.78" width="38.22" height="48.5"/></svg>
+                    </span>
+                   
                 </h2>
                 
                 <span class="roulette-bold">*Este es tu código. Ingrésalo y aplícalo</span>
@@ -182,7 +198,7 @@ export class uiGenerator extends Popup{
         i.select();
         i.setSelectionRange(0, 99999);
         document.execCommand("copy");
-        alert("Cupón copiado en portapapeles")
+        alert("Cupón copiado en portapapeles, no olvides aplicarlo.")
         i.remove()
     }
 
@@ -248,7 +264,7 @@ export class uiGenerator extends Popup{
     private getPercentTag(){
         var cupon=this.cupon
         var percent=`
-        <p>${cupon.percentDelivered}% de cupones entregados hoy</p>
+        <p>Hoy hemos entregado el ${cupon.percentDelivered}% de nuestros cupones</p>
         <div class='roulette-percent'>
             <div class='roulette-percent-val' style="width:${cupon.percentDelivered}%;"></div>
         </div>

@@ -11,8 +11,7 @@ var storageService:StorageService=ServiceSingleton.storage
 export async function cuponGetter(req:ReqModel,res,next){
     
     if(!req.roulette || !req.playRoulette){
-        console.log("asdasdasdasd");
-        
+       
         return
     }
     

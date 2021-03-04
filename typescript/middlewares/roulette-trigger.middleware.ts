@@ -22,8 +22,9 @@ export function rouletteTrigger(req:ReqModel,res,next){
     
         productList=checkoutReader(productsContainer);
         var match=productMatcher(productList);
+        storageService.get("cupon",false)
         
-        if(match){
+        if(match && !storageService.get("cupon",false)){
             req.playRoulette=true
         }
         observer.disconnect();

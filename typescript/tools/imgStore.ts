@@ -43,6 +43,13 @@ export class ImgStore{
         this.images.splice(this.images.indexOf(target),1)
     }
 
+    removeAll(){
+        this.images.forEach(target=>{
+        window.URL.revokeObjectURL(target.blob);
+        })   
+        this.images=[]
+    }
+
 
     private async load(url:string){
         var res= await fetch(url)
