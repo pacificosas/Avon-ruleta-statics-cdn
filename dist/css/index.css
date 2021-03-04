@@ -220,6 +220,12 @@
 .roulette-end-content strong, .roulette-init-content strong {
   font-weight: bold;
 }
+.roulette-end-content img, .roulette-init-content img {
+  max-width: 100%;
+}
+.roulette-end-content a, .roulette-init-content a {
+  text-decoration: currentColor underline;
+}
 
 .roulette-btn {
   padding: 1rem 2rem;
@@ -278,9 +284,32 @@
 
 .cupon-alert-popup {
   padding: 5rem;
+  background-color: #fbdce6;
 }
-.cupon-alert-popup *:not(.roulette-btn) {
+.cupon-alert-popup p {
   color: #a02552;
+}
+@media screen and (max-width: 552px) {
+  .cupon-alert-popup p {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (min-width: 551px) {
+  .cupon-alert-popup p {
+    font-size: 16px;
+  }
+}
+.cupon-alert-popup h2 {
+  text-align: center;
+  color: #e8336e;
+  font-weight: bold;
+}
+
+.tyc {
+  color: white;
+  display: block;
+  margin: auto;
+  text-align: center;
 }
 
 .roulette-bold {

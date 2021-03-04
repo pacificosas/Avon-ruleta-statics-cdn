@@ -4,6 +4,12 @@
     strong{
         font-weight: bold;
     }
+    img{
+        max-width: 100%;
+    }
+    a{
+        text-decoration: currentColor underline;
+    }
 }
 
 .roulette-init-content{

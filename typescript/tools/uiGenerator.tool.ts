@@ -125,9 +125,15 @@ export class uiGenerator extends Popup{
         `
        
         var btn=document.createElement("button")
-        btn.innerText="Gira la ruleta para ganar"
         btn.classList.add("roulette-btn")
-        btn.addEventListener("click",this.runRoulette.bind(this))
+        
+        if(this.cupon.percentDelivered=="100"){
+            btn.innerText="Continuar"
+            btn.addEventListener("click",()=>this.close())
+        }else{
+            btn.innerText="Gira la ruleta para ganar"
+            btn.addEventListener("click",this.runRoulette.bind(this))
+        }
 
         container.append(btn)
 

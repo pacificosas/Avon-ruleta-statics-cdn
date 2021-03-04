@@ -1,8 +1,23 @@
 @import "../variables";
+@import "../mixins/responsive";
 
 .cupon-alert-popup{
     padding: 5rem;
-    *:not(.roulette-btn){
+    background-color: #fbdce6;
+
+    p{
         color:$primaryDarkColor;
+        
+        @include responsive("mobile"){
+            font-size: 1.2rem;
+        }
+        @include responsive("desktop"){
+            font-size: 16px;    
+        }
+    }
+    h2{
+        text-align: center;
+        color:$primaryColor;
+        font-weight: bold;
     }
 }

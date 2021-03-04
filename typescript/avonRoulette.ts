@@ -8,7 +8,6 @@ import { cuponAlert } from "./middlewares/cupon-alert.middlerware";
 import { cuponCheckout } from "./middlewares/cupon-checkout.middleware";
 import { styles } from "./middlewares/styles.middleware";
 import { devLog } from "./tools/devLog.tool";
-import { cuponInput } from "./middlewares/cupon-input.middleware";
 
 export function avonRoulette(){
 
@@ -24,8 +23,6 @@ export function avonRoulette(){
 
     app.use("^/cart/?$",cuponAlert)
     
-    app.use("^/cart/?$",cuponInput)
-
     app.use("^/cart/?$",cuponGetter)
 
 

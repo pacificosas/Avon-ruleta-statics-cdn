@@ -18,6 +18,12 @@ export class StorageService{
         this.shortSave("roulette",JSON.stringify(data)) 
     }
 
+    remove(key:string,short:boolean=true){
+        return short ? 
+            sessionStorage.removeItem(`${this.baseKey}${key}`) :
+            localStorage.removeItem(`${this.baseKey}${key}`)
+    }
+
     shortSave(key:string,data:string){
         sessionStorage.setItem(`${this.baseKey}${key}`,data)
     }
