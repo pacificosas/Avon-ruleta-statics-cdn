@@ -226,6 +226,7 @@ export class uiGenerator extends Popup{
             if(targetZone >= environment.wheel.sides || targetZone < 0 ){
                 reject(new Error("la zona de caida en ruleta solo puede ir desde 0 hasta un lados de la ruleta -1"));
             }
+
             
             setTimeout(()=>{
                 stop=true;
@@ -233,12 +234,18 @@ export class uiGenerator extends Popup{
             
             var stopAt=360-((360/environment.wheel.sides)*targetZone)
             
+           
             
             if(window.innerWidth <= 552 ){
-                stopAt=stopAt+90 > 360 ?  stopAt-90 :stopAt+90
+                stopAt=stopAt+90 > 360 ?  stopAt+90-360 :stopAt+90
             }
+
+            stopAt = stopAt == 360 ? 0 : stopAt
+
+            
             
             if(stopAt < 0){
+               
                 targetZone=noWinPosition(environment.wheel.sides,environment.winPositions)
                 var stopAt=((360/environment.wheel.sides)*targetZone)
                 

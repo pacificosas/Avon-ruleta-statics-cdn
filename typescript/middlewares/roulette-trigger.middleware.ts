@@ -1,3 +1,4 @@
+import { environment } from "../environment";
 import { ReqModel } from "../models/req.model";
 import { ServiceSingleton } from "../patterns/servicesSingleton.pattern";
 import { StorageService } from "../services/storage.service";
@@ -24,7 +25,7 @@ export function rouletteTrigger(req:ReqModel,res,next){
         var match=productMatcher(productList);
         storageService.get("cupon",false)
         
-        if(match && !storageService.get("cupon",false)){
+        if(match && (!storageService.get("cupon",false) || !environment.production)){
             req.playRoulette=true
         }
         observer.disconnect();

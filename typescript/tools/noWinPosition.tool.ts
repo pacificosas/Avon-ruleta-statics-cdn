@@ -9,7 +9,6 @@ export function noWinPosition(wheelSides,winPositions){
         }
     }
     var random=Math.round(Math.random()*positions.length)
-   
-    
+  
     return positions[random];
-}
+} 
