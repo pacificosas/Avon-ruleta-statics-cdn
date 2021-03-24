@@ -129,6 +129,7 @@
   }
 }
 .roulette-card .data {
+  position: relative;
   color: #a02552;
 }
 @media screen and (min-width: 551px) {
@@ -200,6 +201,8 @@
   color: #e8336e;
 }
 .roulette-title-img {
+  display: block;
+  margin: auto;
   width: 100%;
   max-width: 300px;
 }
@@ -225,6 +228,16 @@
 }
 .roulette-end-content a, .roulette-init-content a {
   text-decoration: currentColor underline;
+}
+
+.roulette-end-content {
+  width: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 40%);
+  -webkit-transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .roulette-btn {

@@ -17,6 +17,7 @@ export class uiGenerator extends Popup{
     
     constructor(public parent:HTMLElement, public cupon, public uidata:UiData){
         super();
+        environment.imgStore.removeAll()
         this.onClose=()=>{
             devLog("uiTools","remove all images")
             environment.imgStore.removeAll()
@@ -171,26 +172,28 @@ export class uiGenerator extends Popup{
                this.copyToClipBoard()
 
             })
+            var btn=document.createElement("button")
+            btn.classList.add("roulette-btn")
+            btn.innerText="Continuar"
+            btn.addEventListener('click',()=>{
+                this.close()
+                if(this.cupon.code){
+                    this.copyToClipBoard()
+                }
+            })
+    
+            
+            container.append(btn)
         }else{
             content=`
+                <div class="roulette-end-content"> 
                 <img src="${environment.imgStore.get("endLoseTitle")}" class="roulette-final-title">
                 <h4 style="font-size:15px">¡Te deseamos una mejor suerte la próxima vez!</h4>
+                </div>
             `
             container.innerHTML= content
         }
 
-        var btn=document.createElement("button")
-        btn.classList.add("roulette-btn")
-        btn.innerText="Continuar"
-        btn.addEventListener('click',()=>{
-            this.close()
-            if(this.cupon.code){
-                this.copyToClipBoard()
-            }
-        })
-
-        
-        container.append(btn)
         
         return this
     }

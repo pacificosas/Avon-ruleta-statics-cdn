@@ -45,6 +45,8 @@ export class ImgStore{
 
     removeAll(){
         this.images.forEach(target=>{
+            
+            
         window.URL.revokeObjectURL(target.blob);
         })   
         this.images=[]

@@ -15,6 +15,8 @@
             grid-template-columns: repeat(1,1fr);
             grid-template-rows: 13rem 2fr;
     }
+
+
     
     & .col:first-child{
         overflow: hidden;
@@ -58,6 +60,7 @@
     }
 
     & .data{
+        position: relative;
 
         color:$primaryDarkColor;
 
