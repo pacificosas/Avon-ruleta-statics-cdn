@@ -186,7 +186,7 @@ export class uiGenerator extends Popup{
             container.append(btn)
         }else{
             content=`
-                <div class="roulette-end-content"> 
+                <div class="roulette-end-content lose"> 
                 <img src="${environment.imgStore.get("endLoseTitle")}" class="roulette-final-title">
                 <h4 style="font-size:15px">¡Te deseamos una mejor suerte la próxima vez!</h4>
                 </div>

@@ -1,23 +1,23 @@
 import { ImgStore } from "./tools/imgStore";
 
 export const environment={
-    production:false,
+    production:true,
     
     apiUrl: "https://ruleta.avoncpe.com/api/",
 
-    // staticsUrl:"https://cdn.jsdelivr.net/gh/pacificosas/avon-ruleta-statics-cdn@1/img/",
+    staticsUrl:"https://cdn.jsdelivr.net/gh/pacificosas/avon-ruleta-statics-cdn@1/img/",
 
-    // styles:[
-    //     "https://cdn.jsdelivr.net/gh/pacificosas/avon-ruleta-statics-cdn@1/dist/css/index.css"
-    // ],
+    styles:[
+        "https://cdn.jsdelivr.net/gh/pacificosas/avon-ruleta-statics-cdn@1/dist/css/index.css"
+    ],
 
     // apiUrl: "https://localhost:5001/api/",
 
-    staticsUrl:"http://127.0.0.1:5500/img/",
+    // staticsUrl:"http://127.0.0.1:5500/img/",
 
-    styles:[
-        "http://127.0.0.1:5500/dist/css/index.css"
-    ],
+    // styles:[
+    //     "http://127.0.0.1:5500/dist/css/index.css"
+    // ],
 
     get currentCountry(){
         switch (window.location.hostname) {

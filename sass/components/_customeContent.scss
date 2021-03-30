@@ -19,7 +19,7 @@
 
 .roulette-end-content{
     @extend %customContent;
-
+    &.lose{
         width:90%;
         position: absolute;
         top:50%;
@@ -27,6 +27,8 @@
         transform: translate(-50%,40%);
         -webkit-transform: translate(-50%,-50%);
         text-align: center;
+    }
+
     
 }
 

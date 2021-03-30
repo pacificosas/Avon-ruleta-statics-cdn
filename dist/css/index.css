@@ -230,7 +230,7 @@
   text-decoration: currentColor underline;
 }
 
-.roulette-end-content {
+.roulette-end-content.lose {
   width: 90%;
   position: absolute;
   top: 50%;
