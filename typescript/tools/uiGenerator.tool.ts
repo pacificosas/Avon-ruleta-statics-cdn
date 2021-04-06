@@ -152,7 +152,7 @@ export class uiGenerator extends Popup{
             content=`
                 <img src="${environment.imgStore.get("endTitle")}" class="roulette-final-title">
                 
-                <p class="roulette-end-subtitle"> Felicitaciones! Ganaste un cupón por el <span class="accent">${cupon.type}</span>  de descuento en tu compra ¡Corre a usarlo!<p>
+                <p class="roulette-end-subtitle"> Ganaste un cupón por el <span class="accent">${cupon.type}</span>  de descuento en tu compra ¡Corre a usarlo!<p>
 
                 <h2 class="roulette-cupon"> <span>${cupon.code} </span>
                     <span class="icon">
